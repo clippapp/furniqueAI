@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furniture Schedule</title>
+    <style>
+        /* General Body Styling */
+        body {
+            font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
+            margin: 40px;
+            padding: 0;
+            background-color: #FAFAF9; /* Light beige background */
+            color: #333; /* Dark gray for primary text */
+        }
+    
+        /* Page Title */
+        h1 {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #222; /* Slightly darker gray for emphasis */
+        }
+    
+        /* Total Price Section */
+        .total-price {
+            text-align: right;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #222;
+        }
+    
+        /* Table Styling */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            background-color: #FFFFFF; /* White background for the table */
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+    
+        /* Header Row */
+        th {
+            background-color: #F4F4F4; /* Light gray for headers */
+            text-transform: uppercase;
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            padding: 16px;
+            text-align: center;
+        }
+    
+        /* Table Rows */
+        td {
+            padding: 16px;
+            font-size: 14px;
+            color: #555; /* Slightly lighter gray for content */
+            text-align: center;
+            vertical-align: middle;
+        }
+    
+        /* Row Styling */
+        tr:nth-child(even) {
+            background-color: #F9F9F9; /* Light gray for alternating rows */
+        }
+    
+        tr:hover {
+            background-color: #F1F1F1; /* Slightly darker gray on hover */
+        }
+    
+        /* First Column (Numbering) */
+        td:first-child, th:first-child {
+            text-align: center;
+            font-weight: bold;
+            width: 40px;
+            color: #333;
+        }
+    
+        /* Last Column (Price) */
+        td:last-child, th:last-child {
+            text-align: right;
+            font-weight: bold;
+            color: #111; /* Dark text for prices */
+        }
+    
+        /* Item Column */
+        .item-column {
+            text-align: left;
+            font-weight: 500;
+            color: #222; /* Slightly darker gray for emphasis */
+        }
+    
+        /* Image Styling */
+        img {
+            width: 60px; /* Small but clear image size */
+            height: auto;
+            border-radius: 8px; /* Rounded corners for modern look */
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        }
+    
+        /* Dimension and Color Styling */
+        .secondary-info {
+            color: #666; /* Lighter gray for secondary details */
+            font-size: 14px;
+        }
+    </style>
+    
+</head>
+<body>
+    <h1>Furniture Schedule</h1>
+    <div class="total-price">Total Price: ${{ total_price }}</div>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Item</th>
+                <th>Brand</th>
+                <th>Type</th>
+                <th>Room Type</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ item.name or "N/A" }}</td>
+                <td>{{ item.brand or "N/A" }}</td>
+                <td>{{ item.type or "N/A" }}</td>
+                <td>{{ item.roomType or "N/A" }}</td>
+                <td>${{ item.price or 0 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
